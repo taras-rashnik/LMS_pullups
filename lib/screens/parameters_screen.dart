@@ -8,18 +8,57 @@ class ParametersScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("Parameters screen"),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Back to Workout"),
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("Your data"),
+              Spacer(),
+              Row(
+                children: [
+                  Text("Weight"),
+                  Spacer(),
+                  Text("82"),
+                  Icon(Icons.edit),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Pullups"),
+                  Spacer(),
+                  Text("12"),
+                  Icon(Icons.edit),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Type"),
+                  Spacer(),
+                  Text("Endurance"),
+                  Icon(Icons.edit),
+                ],
+              ),
+              Spacer(),
+              ButtonBar(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Cancel"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Ok"),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
