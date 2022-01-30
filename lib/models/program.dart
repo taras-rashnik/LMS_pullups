@@ -274,7 +274,7 @@ var program = Program(
       maxPullups: 20,
       tables: [
         Table(
-          type: "Таблица 1",
+          type: "Силовые",
           weeks: [
             Week(
               days: [
@@ -382,7 +382,7 @@ var program = Program(
           ],
         ),
         Table(
-          type: "Таблица 2",
+          type: "Выносливость",
           weeks: [
             Week(
               days: [

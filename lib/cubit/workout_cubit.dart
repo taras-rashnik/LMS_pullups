@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms_pullups/cubit/workout_state.dart';
 import 'package:lms_pullups/models/program.dart' as models;
@@ -9,7 +11,6 @@ class WorkoutCubit extends Cubit<WorkoutState> {
             program: program,
             weight: 80,
             pullups: 12,
-            sheetIndex: 0,
             tableIndex: 0,
             weekIndex: 0,
           ),
@@ -36,5 +37,12 @@ class WorkoutCubit extends Cubit<WorkoutState> {
   void toggleDayCompletted(models.Day day) {
     day.completed = !day.completed;
     emit(state.copyWith());
+  }
+
+  void updateParameters(int weight, int pullups, String tableType) {
+    var state1 = state.copyWith(weight: weight, pullups: pullups);
+    var tableIndex = state.currentSheet.tables.indexWhere((e) => e.type == tableType);
+    tableIndex = max(0, tableIndex);
+    emit(state.copyWith(weight: weight, pullups: pullups, tableIndex: tableIndex));
   }
 }

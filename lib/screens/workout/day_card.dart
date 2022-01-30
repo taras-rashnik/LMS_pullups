@@ -3,7 +3,7 @@ import 'package:lms_pullups/cubit/workout_cubit.dart';
 import 'package:lms_pullups/models/program.dart' as models;
 import 'package:provider/src/provider.dart';
 
-import '../lms_pullups_icons.dart';
+import '../../lms_pullups_icons.dart';
 
 class DayCard extends StatelessWidget {
   final models.Day day;

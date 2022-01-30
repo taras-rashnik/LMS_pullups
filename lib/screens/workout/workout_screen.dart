@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms_pullups/cubit/workout_cubit.dart';
 import 'package:lms_pullups/cubit/workout_state.dart';
 
-import '../lms_pullups_icons.dart';
+import '../../lms_pullups_icons.dart';
 import 'day_card.dart';
 
 class WorkoutScreen extends StatelessWidget {

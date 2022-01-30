@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lms_pullups/screens/parameters_screen.dart';
-import 'package:lms_pullups/screens/workout_screen.dart';
+import 'package:lms_pullups/screens/parameters/parameters_screen.dart';
+import 'package:lms_pullups/screens/workout/workout_screen.dart';
 
 import 'cubit/workout_cubit.dart';
 import 'models/program.dart' as models;

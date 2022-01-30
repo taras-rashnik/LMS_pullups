@@ -12,10 +12,9 @@ class WorkoutState {
     required this.program,
     required this.weight,
     required this.pullups,
-    required this.sheetIndex,
     required this.tableIndex,
     required this.weekIndex,
-  });
+  }) : this.sheetIndex = CalculateSheetIndex(program, pullups);
 
   WorkoutState copyWith({
     int? weight,
@@ -28,12 +27,25 @@ class WorkoutState {
         program: program,
         weight: weight ?? this.weight,
         pullups: pullups ?? this.pullups,
-        sheetIndex: sheetIndex ?? this.sheetIndex,
         tableIndex: tableIndex ?? this.tableIndex,
         weekIndex: weekIndex ?? this.weekIndex,
       );
 
   models.Sheet get currentSheet => program.sheets[sheetIndex];
+
   models.Table get currentTable => currentSheet.tables[tableIndex];
+
   models.Week get currentWeek => currentTable.weeks[weekIndex];
+
+  static CalculateSheetIndex(models.Program program, int pullups) {
+    int sheetIndex = program.sheets.length - 1;
+    for (int i = 0; i < program.sheets.length; i++) {
+      if (pullups <= program.sheets[i].maxPullups) {
+        sheetIndex = i;
+        break;
+      }
+    }
+
+    return sheetIndex;
+  }
 }
