@@ -491,5 +491,227 @@ var program = Program(
         ),
       ],
     ),
+    Sheet(
+      minPullups: 21,
+      maxPullups: 24,
+      tables: [
+        Table(
+          type: "Силовые 2",
+          weeks: [
+            Week(
+              days: [
+                Day(
+                  name: "Понедельник",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 8,
+                      sets: 3,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Среда",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "+5кг",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Пятница",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Week(
+              days: [
+                Day(
+                  name: "Понедельник",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 12,
+                      sets: 3,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Среда",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Пятница",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 12,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 10,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "+2кг",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+        Table(
+          type: "Выносливость 2",
+          weeks: [
+            Week(
+              days: [
+                Day(
+                  name: "Понедельник",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 8,
+                      sets: 3,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Среда",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "+5кг",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Пятница",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Week(
+              days: [
+                Day(
+                  name: "Понедельник",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 12,
+                      sets: 3,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Среда",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 10,
+                      sets: 2,
+                    ),
+                  ],
+                ),
+                Day(
+                  name: "Пятница",
+                  exercises: [
+                    Exercise(
+                      load: "Резина",
+                      repeats: 12,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "Соб вес",
+                      repeats: 10,
+                      sets: 1,
+                    ),
+                    Exercise(
+                      load: "+2кг",
+                      repeats: 8,
+                      sets: 1,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
   ],
 );

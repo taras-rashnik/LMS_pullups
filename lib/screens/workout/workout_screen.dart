@@ -28,6 +28,7 @@ class WorkoutScreen extends StatelessWidget {
 
   Widget _workoutBodyBuilder(BuildContext context, WorkoutState state) {
             var sheet = state.currentSheet;
+            var table = state.currentTable;
             var week = state.currentWeek;
 
             return Column(
@@ -35,7 +36,7 @@ class WorkoutScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text("${sheet.minPullups}-${sheet.maxPullups} pullups"),
-                Text(sheet.tables[0].type),
+                Text(table.type),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -3,7 +3,6 @@ import 'package:lms_pullups/models/program.dart' as models;
 class WorkoutState {
   final int weight;
   final int pullups;
-  final int sheetIndex;
   final int tableIndex;
   final int weekIndex;
   final models.Program program;
@@ -14,7 +13,7 @@ class WorkoutState {
     required this.pullups,
     required this.tableIndex,
     required this.weekIndex,
-  }) : this.sheetIndex = CalculateSheetIndex(program, pullups);
+  });
 
   WorkoutState copyWith({
     int? weight,
@@ -31,7 +30,7 @@ class WorkoutState {
         weekIndex: weekIndex ?? this.weekIndex,
       );
 
-  models.Sheet get currentSheet => program.sheets[sheetIndex];
+  models.Sheet get currentSheet => program.sheets[CalculateSheetIndex(program, pullups)];
 
   models.Table get currentTable => currentSheet.tables[tableIndex];
 

@@ -40,9 +40,12 @@ class WorkoutCubit extends Cubit<WorkoutState> {
   }
 
   void updateParameters(int weight, int pullups, String tableType) {
+    print("updateParameters($weight, $pullups, $tableType)");
     var state1 = state.copyWith(weight: weight, pullups: pullups);
-    var tableIndex = state.currentSheet.tables.indexWhere((e) => e.type == tableType);
+    var tableIndex = state1.currentSheet.tables.indexWhere((e) => e.type == tableType);
     tableIndex = max(0, tableIndex);
-    emit(state.copyWith(weight: weight, pullups: pullups, tableIndex: tableIndex));
+    print("tableIndex: $tableIndex");
+    var state2 = state1.copyWith(tableIndex: tableIndex);
+    emit(state2);
   }
 }
