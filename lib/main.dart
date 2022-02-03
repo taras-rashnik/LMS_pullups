@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms_pullups/screens/parameters/parameters_screen.dart';
 import 'package:lms_pullups/screens/workout/workout_screen.dart';
@@ -6,8 +9,11 @@ import 'package:lms_pullups/screens/workout/workout_screen.dart';
 import 'cubit/workout_cubit.dart';
 import 'models/program.dart' as models;
 
-void main() {
-  runApp(LmsApp(program: models.program));
+Future<void> main() async {
+  String json = await rootBundle.loadString('assets/json/pullups_program.json');
+  models.Program program = models.Program.fromJson(jsonDecode(json));
+
+  runApp(LmsApp(program: program));
 }
 
 class LmsApp extends StatelessWidget {

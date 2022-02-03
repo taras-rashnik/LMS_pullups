@@ -1,3 +1,4 @@
+import 'dart:convert';
 
 class Exercise {
   final String load;
@@ -5,6 +6,17 @@ class Exercise {
   final int sets;
 
   Exercise({required this.load, required this.repeats, required this.sets});
+
+  Exercise.fromJson(Map<String, dynamic> json)
+      : load = json['load'] as String,
+        repeats = json['repeats'] as int,
+        sets = json['sets'] as int;
+
+  Map<String, dynamic> toJson() => {
+        'load': load,
+        'repeats': repeats,
+        'sets': sets,
+      };
 }
 
 class Day {
@@ -13,12 +25,33 @@ class Day {
   bool completed = false;
 
   Day({required this.name, required this.exercises});
+
+  Day.fromJson(Map<String, dynamic> json)
+      : name = json['name'] as String,
+        exercises = json['exercises'] != null
+            ? List<Exercise>.from(
+                (json['exercises'] as List).map((p) => Exercise.fromJson(p)).toList())
+            : List<Exercise>.empty();
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'exercises': exercises,
+      };
 }
 
 class Week {
   final List<Day> days;
 
   Week({required this.days});
+
+  Week.fromJson(Map<String, dynamic> json)
+      : days = json['days'] != null
+            ? List<Day>.from((json['days'] as List).map((p) => Day.fromJson(p)).toList())
+            : List<Day>.empty();
+
+  Map<String, dynamic> toJson() => {
+        'days': days,
+      };
 }
 
 class Table {
@@ -26,6 +59,17 @@ class Table {
   final List<Week> weeks;
 
   Table({required this.type, required this.weeks});
+
+  Table.fromJson(Map<String, dynamic> json)
+      : type = json['type'] as String,
+        weeks = json['weeks'] != null
+            ? List<Week>.from((json['weeks'] as List).map((p) => Week.fromJson(p)).toList())
+            : List<Week>.empty();
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'weeks': weeks,
+      };
 }
 
 class Sheet {
@@ -33,16 +77,35 @@ class Sheet {
   final int maxPullups;
   final List<Table> tables;
 
-  Sheet(
-      {required this.minPullups,
-      required this.maxPullups,
-      required this.tables});
+  Sheet({required this.minPullups, required this.maxPullups, required this.tables});
+
+  Sheet.fromJson(Map<String, dynamic> json)
+      : minPullups = json['minPullups'] as int,
+        maxPullups = json['maxPullups'] as int,
+        tables = json['tables'] != null
+            ? List<Table>.from((json['tables'] as List).map((p) => Table.fromJson(p)).toList())
+            : List<Table>.empty();
+
+  Map<String, dynamic> toJson() => {
+    'minPullups': minPullups,
+    'maxPullups': maxPullups,
+    'tables': tables,
+  };
 }
 
 class Program {
   final List<Sheet> sheets;
 
   Program({required this.sheets});
+
+  Program.fromJson(Map<String, dynamic> json)
+      : sheets = json['sheets'] != null
+      ? List<Sheet>.from((json['sheets'] as List).map((p) => Sheet.fromJson(p)).toList())
+      : List<Sheet>.empty();
+
+  Map<String, dynamic> toJson() => {
+    'sheets': sheets,
+  };
 }
 
 var program = Program(
