@@ -10,6 +10,7 @@ import 'cubit/workout_cubit.dart';
 import 'models/program.dart' as models;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   String json = await rootBundle.loadString('assets/json/pullups_program.json');
   models.Program program = models.Program.fromJson(jsonDecode(json));
 
