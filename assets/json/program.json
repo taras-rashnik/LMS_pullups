@@ -1,0 +1,210 @@
+{
+  "sheets": [
+    {
+      "minPullups": 13,
+      "maxPullups": 16,
+      "tables": [
+        {
+          "type": "Таблица 1",
+          "weeks": [
+            {
+              "days": [
+                {
+                  "name": "Понедельник",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 8,
+                      "sets": 3
+                    },
+                    {
+                      "load": "Соб вес",
+                      "repeats": 8,
+                      "sets": 1
+                    }
+                  ]
+                },
+                {
+                  "name": "Среда",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 10,
+                      "sets": 2
+                    },
+                    {
+                      "load": "Соб вес",
+                      "repeats": 8,
+                      "sets": 1
+                    },
+                    {
+                      "load": "5",
+                      "repeats": 8,
+                      "sets": 1
+                    }
+                  ]
+                },
+                {
+                  "name": "Пятница",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 10,
+                      "sets": 2
+                    },
+                    {
+                      "load": "Соб вес",
+                      "repeats": 8,
+                      "sets": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "days": [
+                {
+                  "name": "Понедельник",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 12,
+                      "sets": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "Среда",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 10,
+                      "sets": 2
+                    },
+                    {
+                      "load": "Соб вес",
+                      "repeats": 10,
+                      "sets": 2
+                    }
+                  ]
+                },
+                {
+                  "name": "Пятница",
+                  "exercises": [
+                    {
+                      "load": "Резина",
+                      "repeats": 12,
+                      "sets": 1
+                    },
+                    {
+                      "load": "Соб вес",
+                      "repeats": 10,
+                      "sets": 1
+                    },
+                    {
+                      "load": "2",
+                      "repeats": 8,
+                      "sets": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "days": [
+                {
+                  "name": "Monday",
+                  "exercises": [
+                    {
+                      "load": "Rubber",
+                      "repeats": 8,
+                      "sets": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "days": [
+                {
+                  "name": "Monday",
+                  "exercises": [
+                    {
+                      "load": "Rubber",
+                      "repeats": 8,
+                      "sets": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "days": [
+                {
+                  "name": "Monday",
+                  "exercises": [
+                    {
+                      "load": "Rubber",
+                      "repeats": 8,
+                      "sets": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "minPullups": 17,
+      "maxPullups": 20,
+      "tables": [
+        {
+          "type": "Table 1",
+          "weeks": [
+            {
+              "days": [
+                {
+                  "name": "Monday",
+                  "exercises": [
+                    {
+                      "load": "Rubber",
+                      "repeats": 8,
+                      "sets": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "minPullups": 21,
+      "maxPullups": 24,
+      "tables": [
+        {
+          "type": "Table 1",
+          "weeks": [
+            {
+              "days": [
+                {
+                  "name": "Monday",
+                  "exercises": [
+                    {
+                      "load": "Rubber",
+                      "repeats": 8,
+                      "sets": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
