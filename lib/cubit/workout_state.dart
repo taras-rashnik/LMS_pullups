@@ -48,6 +48,10 @@ class WorkoutState {
       }
     }
 
+    if(pullups <= program.sheets[0].maxPullups) {
+      sheetIndex = 0;
+    }
+
     return sheetIndex;
   }
 
@@ -65,6 +69,7 @@ class WorkoutState {
   }
 
   String _completedDayKey(int dayIndex) {
-    return "$tableIndex-$weekIndex-$dayIndex";
+    final sheetIndex = calculateSheetIndex(program, pullups);
+    return "$sheetIndex-$tableIndex-$weekIndex-$dayIndex";
   }
 }

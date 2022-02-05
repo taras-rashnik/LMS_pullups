@@ -56,6 +56,12 @@ class _ParametersPickerState extends State<ParametersPicker> {
                 .firstWhereOrNull((s) => s.minPullups <= _pullups && _pullups <= s.maxPullups) ??
             state.currentSheet;
 
+        if (_pullups <= state.program.sheets[0].minPullups) {
+          sheet = state.program.sheets[0];
+        } else if (_pullups >= state.program.sheets[state.program.sheets.length - 1].maxPullups) {
+          sheet = state.program.sheets[state.program.sheets.length - 1];
+        }
+
         var types = sheet.tables.map((t) => t.type).toList();
         if (!types.contains(_selectedType)) {
           _selectedType = types[state.tableIndex];
