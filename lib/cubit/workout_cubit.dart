@@ -13,6 +13,7 @@ class WorkoutCubit extends Cubit<WorkoutState> {
             pullups: 12,
             tableIndex: 0,
             weekIndex: 0,
+            completedDays: List<String>.empty(growable: true),
           ),
         );
 
@@ -34,32 +35,21 @@ class WorkoutCubit extends Cubit<WorkoutState> {
 
   void changeTableIndex(int tableIndex) => emit(state.copyWith(tableIndex: tableIndex));
 
-  void toggleDayCompletted(models.Day day) {
-    day.completed = !day.completed;
+  void toggleDayCompletted(int dayIndex) {
+    state.toggleDayCompletted(dayIndex);
     emit(state.copyWith());
   }
 
   void updateParameters(int weight, int pullups, String tableType) {
-    print("updateParameters($weight, $pullups, $tableType)");
     var state1 = state.copyWith(weight: weight, pullups: pullups);
     var tableIndex = state1.currentSheet.tables.indexWhere((e) => e.type == tableType);
     tableIndex = max(0, tableIndex);
-    print("tableIndex: $tableIndex");
     var state2 = state1.copyWith(tableIndex: tableIndex);
     emit(state2);
   }
 
   void clearProgress() {
-    for(var sheet in state.program.sheets){
-      for(var table in sheet.tables){
-        for(var week in table.weeks){
-          for(var day in week.days){
-            day.completed = false;
-          }
-        }
-      }
-    }
-
+    state.completedDays.clear();
     emit(state.copyWith());
   }
 }

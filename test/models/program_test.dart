@@ -9,7 +9,7 @@ void main() {
       test(
         "Exersice",
         () {
-          final String exersiceJson = '''
+          const String exersiceJson = '''
           {
             "load": "Резина",
             "repeats": 8,
@@ -28,7 +28,7 @@ void main() {
       test(
         "Day",
         () {
-          final String dayJson = '''
+          const String dayJson = '''
           {
             "name": "Понедельник",
             "exercises": [
@@ -64,7 +64,7 @@ void main() {
       test(
         "Week",
         () {
-          final String weekJson = '''
+          const String weekJson = '''
             {
               "days": [
                 {
@@ -139,7 +139,7 @@ void main() {
       test(
         "Table",
         () {
-          final String tableJson = '''
+          const String tableJson = '''
         {
           "type": "Таблица 1",
           "weeks": [

@@ -1,11 +1,10 @@
-import 'dart:convert';
 
 class Exercise {
   final String load;
   final int repeats;
   final int sets;
 
-  Exercise({required this.load, required this.repeats, required this.sets});
+  const Exercise({required this.load, required this.repeats, required this.sets});
 
   Exercise.fromJson(Map<String, dynamic> json)
       : load = json['load'] as String,
@@ -22,9 +21,9 @@ class Exercise {
 class Day {
   final String name;
   final List<Exercise> exercises;
-  bool completed = false;
+  // bool completed = false;
 
-  Day({required this.name, required this.exercises});
+  const Day({required this.name, required this.exercises});
 
   Day.fromJson(Map<String, dynamic> json)
       : name = json['name'] as String,
@@ -42,7 +41,7 @@ class Day {
 class Week {
   final List<Day> days;
 
-  Week({required this.days});
+  const Week({required this.days});
 
   Week.fromJson(Map<String, dynamic> json)
       : days = json['days'] != null
@@ -58,7 +57,7 @@ class Table {
   final String type;
   final List<Week> weeks;
 
-  Table({required this.type, required this.weeks});
+  const Table({required this.type, required this.weeks});
 
   Table.fromJson(Map<String, dynamic> json)
       : type = json['type'] as String,
@@ -77,7 +76,7 @@ class Sheet {
   final int maxPullups;
   final List<Table> tables;
 
-  Sheet({required this.minPullups, required this.maxPullups, required this.tables});
+  const Sheet({required this.minPullups, required this.maxPullups, required this.tables});
 
   Sheet.fromJson(Map<String, dynamic> json)
       : minPullups = json['minPullups'] as int,
@@ -96,7 +95,7 @@ class Sheet {
 class Program {
   final List<Sheet> sheets;
 
-  Program({required this.sheets});
+  const Program({required this.sheets});
 
   Program.fromJson(Map<String, dynamic> json)
       : sheets = json['sheets'] != null
@@ -108,6 +107,7 @@ class Program {
   };
 }
 
+/*
 var program = Program(
   sheets: [
     Sheet(
@@ -778,3 +778,4 @@ var program = Program(
     ),
   ],
 );
+*/

@@ -26,10 +26,6 @@ class WorkoutScreen extends StatelessWidget {
   }
 
   Widget _workoutBodyBuilder(BuildContext context, WorkoutState state) {
-    var sheet = state.currentSheet;
-    var table = state.currentTable;
-    var week = state.currentWeek;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,20 +38,20 @@ class WorkoutScreen extends StatelessWidget {
             enableInfiniteScroll: false,
             onPageChanged: (i, r){context.read<WorkoutCubit>().changeWeekIndex(i);},
           ),
-          itemCount: table.weeks.length,
+          itemCount: state.currentTable.weeks.length,
           itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
               Center(child: WeekCard(state: state, weekIndex: itemIndex)),
         ),
         // WeekCard(state: state, weekIndex: 0),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Flexible(
           child: ListView.builder(
-            itemCount: week.days.length,
+            itemCount: state.currentWeek.days.length,
             itemBuilder: (BuildContext context, int index) {
               return DayCard(
-                day: week.days[index],
+                state: state, dayIndex: index,
               );
             },
           ),
@@ -66,13 +62,13 @@ class WorkoutScreen extends StatelessWidget {
 
   AppBar _workuotToolBarBuilder(BuildContext context) {
     return AppBar(
-      leading: Icon(
+      leading: const Icon(
         LmsPullups.pull_up_bar,
         size: 40,
       ),
       actions: [
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.settings_outlined,
             size: 34,
           ),
@@ -91,7 +87,7 @@ class WorkoutScreen extends StatelessWidget {
                   context.read<WorkoutCubit>().clearProgress();
                 },
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.delete_forever_outlined,
                       color: Colors.red,
@@ -107,7 +103,7 @@ class WorkoutScreen extends StatelessWidget {
           },
         ),
       ],
-      title: Text("Подтягивания"),
+      title: const Text("Подтягивания"),
       centerTitle: true,
     );
   }

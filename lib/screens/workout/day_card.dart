@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:lms_pullups/cubit/workout_cubit.dart';
+import 'package:lms_pullups/cubit/workout_state.dart';
 import 'package:lms_pullups/models/program.dart' as models;
-import 'package:provider/src/provider.dart';
-
+import 'package:provider/provider.dart';
 import '../../lms_pullups_icons.dart';
 
 class DayCard extends StatelessWidget {
-  final models.Day day;
+  final WorkoutState state;
+  final int dayIndex;
 
-  const DayCard({Key? key, required this.day}) : super(key: key);
+  const DayCard({Key? key, required this.state, required this.dayIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final day = state.currentWeek.days[dayIndex];
+
     return Card(
       elevation: 4,
       child: Column(
@@ -20,7 +23,7 @@ class DayCard extends StatelessWidget {
           ListTile(
             leading: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Icon(LmsPullups.calendar_day),
               ],
             ),
@@ -32,12 +35,12 @@ class DayCard extends StatelessWidget {
             children: [
               Checkbox(
                 tristate: false,
-                value: day.completed,
+                value: state.isDayCompleted(dayIndex),
                 onChanged: (v) {
-                  context.read<WorkoutCubit>().toggleDayCompletted(day);
+                  context.read<WorkoutCubit>().toggleDayCompletted(dayIndex);
                 },
               ),
-              Text(
+              const Text(
                 "Готово",
                 style: TextStyle(
                   // fontSize: 20,

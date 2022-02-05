@@ -29,14 +29,14 @@ class LmsApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
             bodyText2: TextStyle(fontSize: 20.0),
           ),
         ),
         initialRoute: "/",
         routes: {
-          "/": (ctx) => WorkoutScreen(),
-          "/parameters": (ctx) => ParametersScreen(),
+          "/": (ctx) => const WorkoutScreen(),
+          "/parameters": (ctx) => const ParametersScreen(),
         },
       ),
     );

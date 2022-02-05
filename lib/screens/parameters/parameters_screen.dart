@@ -9,16 +9,16 @@ class ParametersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
+        leading: const Icon(
           LmsPullups.pull_up_bar,
           size: 40,
         ),
-        title: Text("Личные данные"),
+        title: const Text("Личные данные"),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
+          padding: EdgeInsets.symmetric(vertical: 50, horizontal: 50),
           child: ParametersPicker(),
         ),
       ),

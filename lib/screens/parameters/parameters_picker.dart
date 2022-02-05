@@ -65,9 +65,9 @@ class _ParametersPickerState extends State<ParametersPicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Ваши параметры"),
-            Spacer(),
-            Divider(),
+            const Text("Ваши параметры"),
+            const Spacer(),
+            const Divider(),
             IntegerPicker(
               title: "Ваш вес",
               minValue: 30,
@@ -75,8 +75,8 @@ class _ParametersPickerState extends State<ParametersPicker> {
               value: _weight,
               onChanged: _handleWeightChange,
             ),
-            Spacer(),
-            Divider(),
+            const Spacer(),
+            const Divider(),
             IntegerPicker(
               title: "Подтягивания",
               minValue: 10,
@@ -84,29 +84,29 @@ class _ParametersPickerState extends State<ParametersPicker> {
               value: _pullups,
               onChanged: _handlePullupsChange,
             ),
-            Spacer(),
-            Divider(),
+            const Spacer(),
+            const Divider(),
             TablePicker(
               types: types,
               selectedType: _selectedType,
               onChanged: _handleTypeChange,
             ),
-            Spacer(),
-            Divider(),
+            const Spacer(),
+            const Divider(),
             ButtonBar(
               children: [
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text("Отменить"),
+                  child: const Text("Отменить"),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     context.read<WorkoutCubit>().updateParameters(_weight, _pullups, _selectedType);
                     Navigator.of(context).pop();
                   },
-                  child: Text("ОК"),
+                  child: const Text("ОК"),
                 ),
               ],
             )

@@ -5,14 +5,16 @@ class WorkoutState {
   final int pullups;
   final int tableIndex;
   final int weekIndex;
+  final List<String> completedDays;
   final models.Program program;
 
-  WorkoutState({
+  const WorkoutState({
     required this.program,
     required this.weight,
     required this.pullups,
     required this.tableIndex,
     required this.weekIndex,
+    required this.completedDays,
   });
 
   WorkoutState copyWith({
@@ -28,15 +30,16 @@ class WorkoutState {
         pullups: pullups ?? this.pullups,
         tableIndex: tableIndex ?? this.tableIndex,
         weekIndex: weekIndex ?? this.weekIndex,
+        completedDays: completedDays,
       );
 
-  models.Sheet get currentSheet => program.sheets[CalculateSheetIndex(program, pullups)];
+  models.Sheet get currentSheet => program.sheets[calculateSheetIndex(program, pullups)];
 
   models.Table get currentTable => currentSheet.tables[tableIndex];
 
   models.Week get currentWeek => currentTable.weeks[weekIndex];
 
-  static CalculateSheetIndex(models.Program program, int pullups) {
+  static calculateSheetIndex(models.Program program, int pullups) {
     int sheetIndex = program.sheets.length - 1;
     for (int i = 0; i < program.sheets.length; i++) {
       if (pullups <= program.sheets[i].maxPullups) {
@@ -46,5 +49,22 @@ class WorkoutState {
     }
 
     return sheetIndex;
+  }
+
+  bool isDayCompleted(int dayIndex) {
+    return completedDays.contains(_completedDayKey(dayIndex));
+  }
+
+  void toggleDayCompletted(int dayIndex) {
+    final key = _completedDayKey(dayIndex);
+    if (completedDays.contains(key)) {
+      completedDays.remove(key);
+    } else {
+      completedDays.add(key);
+    }
+  }
+
+  String _completedDayKey(int dayIndex) {
+    return "$tableIndex-$weekIndex-$dayIndex";
   }
 }

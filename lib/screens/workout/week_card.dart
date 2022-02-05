@@ -14,13 +14,13 @@ class WeekCard extends StatelessWidget {
       child: ListTile(
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Icon(Icons.arrow_back_ios),
           ],
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Icon(Icons.arrow_forward_ios),
           ],
         ),
@@ -29,7 +29,7 @@ class WeekCard extends StatelessWidget {
           children: [
             Text(
               "Неделя ${weekIndex + 1}",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ],
         ),
@@ -37,7 +37,7 @@ class WeekCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("${state.currentSheet.minPullups}-${state.currentSheet.maxPullups} раз"),
-            Text("${state.currentTable.type}"),
+            Text(state.currentTable.type),
           ],
         ),
       ),
