@@ -30,8 +30,6 @@ class LmsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: TextTheme(
-            caption: TextStyle(fontSize: 28.0),
-            bodyText1: TextStyle(fontSize: 28.0),
             bodyText2: TextStyle(fontSize: 20.0),
           ),
         ),

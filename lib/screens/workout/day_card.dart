@@ -18,8 +18,13 @@ class DayCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ListTile(
-            leading: Icon(LmsPullups.calendar_day),
-            title: Text(day.name),
+            leading: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(LmsPullups.calendar_day),
+              ],
+            ),
+            subtitle: Text(day.name),
           ),
           _getExersiceTable(day),
           Row(
@@ -52,21 +57,21 @@ class DayCard extends StatelessWidget {
         DataColumn(
           label: Text(
             'Нагрузка',
-            // style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
         DataColumn(
           numeric: true,
           label: Text(
             'Повторения',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
         DataColumn(
           numeric: true,
           label: Text(
             'Подходы',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
       ],

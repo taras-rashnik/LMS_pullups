@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../cubit/workout_state.dart';
 
-
 class WeekCard extends StatelessWidget {
   final WorkoutState state;
+  final int weekIndex;
 
-  const WeekCard({
-    Key? key,
-    required this.state,
-  }) : super(key: key);
+  const WeekCard({Key? key, required this.state, required this.weekIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,7 @@ class WeekCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Неделя ${state.weekIndex + 1}",
+              "Неделя ${weekIndex + 1}",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ],

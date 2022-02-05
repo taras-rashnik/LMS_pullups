@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lms_pullups/cubit/workout_cubit.dart';
 import 'package:lms_pullups/cubit/workout_state.dart';
 import 'package:lms_pullups/screens/workout/week_card.dart';
 import '../../lms_pullups_icons.dart';
 import 'day_card.dart';
-
 
 class WorkoutScreen extends StatelessWidget {
   const WorkoutScreen({Key? key}) : super(key: key);
@@ -34,8 +34,22 @@ class WorkoutScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        WeekCard(state: state),
-        SizedBox(height: 8,),
+        CarouselSlider.builder(
+          options: CarouselOptions(
+            height: 120.0,
+            viewportFraction: 1,
+            initialPage: state.weekIndex,
+            enableInfiniteScroll: false,
+            onPageChanged: (i, r){context.read<WorkoutCubit>().changeWeekIndex(i);},
+          ),
+          itemCount: table.weeks.length,
+          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+              Center(child: WeekCard(state: state, weekIndex: itemIndex)),
+        ),
+        // WeekCard(state: state, weekIndex: 0),
+        SizedBox(
+          height: 8,
+        ),
         Flexible(
           child: ListView.builder(
             itemCount: week.days.length,
@@ -98,4 +112,3 @@ class WorkoutScreen extends StatelessWidget {
     );
   }
 }
-
