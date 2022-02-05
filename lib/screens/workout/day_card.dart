@@ -13,7 +13,7 @@ class DayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 16),
+      elevation: 4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -51,21 +51,21 @@ class DayCard extends StatelessWidget {
       columns: const <DataColumn>[
         DataColumn(
           label: Text(
-            'Load',
+            'Нагрузка',
             // style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         DataColumn(
           numeric: true,
           label: Text(
-            'Repeats',
+            'Повторения',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         DataColumn(
           numeric: true,
           label: Text(
-            'Sets',
+            'Подходы',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),

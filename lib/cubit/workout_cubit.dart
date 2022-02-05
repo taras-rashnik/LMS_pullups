@@ -48,4 +48,18 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     var state2 = state1.copyWith(tableIndex: tableIndex);
     emit(state2);
   }
+
+  void clearProgress() {
+    for(var sheet in state.program.sheets){
+      for(var table in sheet.tables){
+        for(var week in table.weeks){
+          for(var day in week.days){
+            day.completed = false;
+          }
+        }
+      }
+    }
+
+    emit(state.copyWith());
+  }
 }

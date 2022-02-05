@@ -65,11 +65,11 @@ class _ParametersPickerState extends State<ParametersPicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Your data"),
+            Text("Ваши параметры"),
             Spacer(),
             Divider(),
             IntegerPicker(
-              title: "Your Weight",
+              title: "Ваш вес",
               minValue: 30,
               maxValue: 150,
               value: _weight,
@@ -78,7 +78,7 @@ class _ParametersPickerState extends State<ParametersPicker> {
             Spacer(),
             Divider(),
             IntegerPicker(
-              title: "Pullups",
+              title: "Подтягивания",
               minValue: 10,
               maxValue: 50,
               value: _pullups,
@@ -99,14 +99,14 @@ class _ParametersPickerState extends State<ParametersPicker> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text("Cancel"),
+                  child: Text("Отменить"),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     context.read<WorkoutCubit>().updateParameters(_weight, _pullups, _selectedType);
                     Navigator.of(context).pop();
                   },
-                  child: Text("Ok"),
+                  child: Text("ОК"),
                 ),
               ],
             )

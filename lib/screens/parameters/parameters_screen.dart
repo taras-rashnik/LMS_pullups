@@ -13,7 +13,7 @@ class ParametersScreen extends StatelessWidget {
           LmsPullups.pull_up_bar,
           size: 40,
         ),
-        title: Text("Personal data"),
+        title: Text("Личные данные"),
         centerTitle: true,
       ),
       body: Center(
