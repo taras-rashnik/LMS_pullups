@@ -17,6 +17,7 @@ class DayCard extends StatelessWidget {
 
     return Card(
       elevation: 4,
+      color: state.isDayCompleted(dayIndex) ? Colors.grey[300] : Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

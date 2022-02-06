@@ -5,12 +5,18 @@ class WeekCard extends StatelessWidget {
   final WorkoutState state;
   final int weekIndex;
 
-  const WeekCard({Key? key, required this.state, required this.weekIndex}) : super(key: key);
+  bool _completed = false;
+
+  WeekCard({Key? key, required this.state, required this.weekIndex})
+      : super(key: key) {
+    _completed = state.isWeekCompleted(weekIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
+      color: _completed ? Colors.grey[300] : Colors.white,
       child: ListTile(
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -36,7 +36,9 @@ class WorkoutScreen extends StatelessWidget {
             viewportFraction: 1,
             initialPage: state.weekIndex,
             enableInfiniteScroll: false,
-            onPageChanged: (i, r){context.read<WorkoutCubit>().changeWeekIndex(i);},
+            onPageChanged: (i, r) {
+              context.read<WorkoutCubit>().changeWeekIndex(i);
+            },
           ),
           itemCount: state.currentTable.weeks.length,
           itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
@@ -51,7 +53,8 @@ class WorkoutScreen extends StatelessWidget {
             itemCount: state.currentWeek.days.length,
             itemBuilder: (BuildContext context, int index) {
               return DayCard(
-                state: state, dayIndex: index,
+                state: state,
+                dayIndex: index,
               );
             },
           ),

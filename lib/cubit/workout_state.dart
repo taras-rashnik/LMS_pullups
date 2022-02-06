@@ -55,8 +55,23 @@ class WorkoutState {
     return sheetIndex;
   }
 
+  bool isWeekCompleted(int weekIndex) {
+    final week = currentTable.weeks[weekIndex];
+    for(int i = 0; i < week.days.length; i++){
+      if(!isWeekDayCompleted(weekIndex, i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  bool isWeekDayCompleted(int weekIndex, int dayIndex) {
+    return completedDays.contains(_completedWeekDayKey(weekIndex, dayIndex));
+  }
+
   bool isDayCompleted(int dayIndex) {
-    return completedDays.contains(_completedDayKey(dayIndex));
+    return isWeekDayCompleted(weekIndex, dayIndex);
   }
 
   void toggleDayCompletted(int dayIndex) {
@@ -69,6 +84,10 @@ class WorkoutState {
   }
 
   String _completedDayKey(int dayIndex) {
+    return _completedWeekDayKey(weekIndex, dayIndex);
+  }
+
+  String _completedWeekDayKey(int weekIndex, int dayIndex) {
     final sheetIndex = calculateSheetIndex(program, pullups);
     return "$sheetIndex-$tableIndex-$weekIndex-$dayIndex";
   }
