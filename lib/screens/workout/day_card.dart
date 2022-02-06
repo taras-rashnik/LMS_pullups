@@ -38,7 +38,7 @@ class DayCard extends StatelessWidget {
                 tristate: false,
                 value: state.isDayCompleted(dayIndex),
                 onChanged: (v) {
-                  context.read<WorkoutCubit>().toggleDayCompletted(dayIndex);
+                  context.read<WorkoutCubit>().toggleDayCompleted(dayIndex);
                 },
               ),
               const Text(

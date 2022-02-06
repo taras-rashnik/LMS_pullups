@@ -7,25 +7,29 @@ import 'package:lms_pullups/screens/parameters/parameters_screen.dart';
 import 'package:lms_pullups/screens/workout/workout_screen.dart';
 
 import 'cubit/workout_cubit.dart';
+import 'cubit/workout_state.dart';
 import 'models/program.dart' as models;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   String json = await rootBundle.loadString('assets/json/pullups_program.json');
   models.Program program = models.Program.fromJson(jsonDecode(json));
 
-  runApp(LmsApp(program: program));
+  final state = await WorkoutState.loadFromSharedPreferences(program);
+
+  runApp(LmsApp(state: state));
 }
 
 class LmsApp extends StatelessWidget {
-  final models.Program program;
+  final WorkoutState state;
 
-  const LmsApp({required this.program, Key? key}) : super(key: key);
+  const LmsApp({required this.state, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => WorkoutCubit(program),
+      create: (BuildContext context) => WorkoutCubit(state),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

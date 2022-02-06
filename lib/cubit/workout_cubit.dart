@@ -1,43 +1,19 @@
 import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms_pullups/cubit/workout_state.dart';
-import 'package:lms_pullups/models/program.dart' as models;
 
 class WorkoutCubit extends Cubit<WorkoutState> {
-  WorkoutCubit(models.Program program)
-      : super(
-          WorkoutState(
-            program: program,
-            weight: 80,
-            pullups: 12,
-            tableIndex: 0,
-            weekIndex: 0,
-            completedDays: List<String>.empty(growable: true),
-          ),
-        );
+  WorkoutCubit(WorkoutState state) : super(state);
 
-  void changeWeight(int weight) => emit(state.copyWith(weight: weight));
-
-  void changeWeekIndex(int weekIndex) => emit(state.copyWith(weekIndex: weekIndex));
-
-  void changeNumPullups(int pullups) {
-    int sheetIndex = state.program.sheets.length - 1;
-    for (int i = 0; i < state.program.sheets.length; i++) {
-      if (pullups < state.program.sheets[i].maxPullups) {
-        sheetIndex = i;
-        break;
-      }
-    }
-
-    emit(state.copyWith(pullups: pullups, sheetIndex: sheetIndex));
+  void changeWeekIndex(int weekIndex) {
+    emit(state.copyWith(weekIndex: weekIndex));
+    state.saveToSharedPreferences(weekIndex: weekIndex);
   }
 
-  void changeTableIndex(int tableIndex) => emit(state.copyWith(tableIndex: tableIndex));
-
-  void toggleDayCompletted(int dayIndex) {
+  void toggleDayCompleted(int dayIndex) {
     state.toggleDayCompletted(dayIndex);
     emit(state.copyWith());
+    state.saveToSharedPreferences(completedDays: state.completedDays);
   }
 
   void updateParameters(int weight, int pullups, String tableType) {
@@ -46,10 +22,12 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     tableIndex = max(0, tableIndex);
     var state2 = state1.copyWith(tableIndex: tableIndex);
     emit(state2);
+    state.saveToSharedPreferences(weight: weight, pullups: pullups, tableIndex: tableIndex);
   }
 
   void clearProgress() {
     state.completedDays.clear();
     emit(state.copyWith());
+    state.saveToSharedPreferences(completedDays: state.completedDays);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:lms_pullups/models/program.dart' as models;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WorkoutState {
   final int weight;
@@ -20,7 +21,6 @@ class WorkoutState {
   WorkoutState copyWith({
     int? weight,
     int? pullups,
-    int? sheetIndex,
     int? tableIndex,
     int? weekIndex,
   }) =>
@@ -32,6 +32,45 @@ class WorkoutState {
         weekIndex: weekIndex ?? this.weekIndex,
         completedDays: completedDays,
       );
+
+  static Future<WorkoutState> loadFromSharedPreferences(models.Program program) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    return WorkoutState(
+      program: program,
+      weight: prefs.getInt('weight') ?? 80,
+      pullups: prefs.getInt('pullups') ?? 12,
+      tableIndex: prefs.getInt('tableIndex') ?? 0,
+      weekIndex: prefs.getInt('weekIndex') ?? 0,
+      completedDays: prefs.getStringList("completedDays") ?? List<String>.empty(growable: true),
+    );
+  }
+
+  Future<void> saveToSharedPreferences({
+    int? weight,
+    int? pullups,
+    int? tableIndex,
+    int? weekIndex,
+    List<String>? completedDays,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (weight != null) {
+      await prefs.setInt('weight', weight);
+    }
+    if (pullups != null) {
+      await prefs.setInt('pullups', pullups);
+    }
+    if (tableIndex != null) {
+      await prefs.setInt('tableIndex', tableIndex);
+    }
+    if (weekIndex != null) {
+      await prefs.setInt('weekIndex', weekIndex);
+    }
+    if (completedDays != null) {
+      await prefs.setStringList('completedDays', completedDays);
+    }
+  }
 
   models.Sheet get currentSheet => program.sheets[calculateSheetIndex(program, pullups)];
 
@@ -48,7 +87,7 @@ class WorkoutState {
       }
     }
 
-    if(pullups <= program.sheets[0].maxPullups) {
+    if (pullups <= program.sheets[0].maxPullups) {
       sheetIndex = 0;
     }
 
@@ -57,8 +96,8 @@ class WorkoutState {
 
   bool isWeekCompleted(int weekIndex) {
     final week = currentTable.weeks[weekIndex];
-    for(int i = 0; i < week.days.length; i++){
-      if(!isWeekDayCompleted(weekIndex, i)) {
+    for (int i = 0; i < week.days.length; i++) {
+      if (!isWeekDayCompleted(weekIndex, i)) {
         return false;
       }
     }
